@@ -1,12 +1,12 @@
-// src/data/books.js
-// Catalog of books for PageTurner Bookstore
+﻿// src/data/books.js
+// Catalog of books for PageTurner Bookstore (9 curated books)
 
 export const BOOKS = [
   {
     id: 1,
     title: "The Stranger",
     author: "Albert Camus",
-    category: "Philosophy / Classic",
+    category: "Classic",
     price: 1200,
     cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80"
   },
@@ -30,7 +30,7 @@ export const BOOKS = [
     id: 4,
     title: "1984",
     author: "George Orwell",
-    category: "Classic Fiction",
+    category: "Classic",
     price: 1400,
     cover: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80"
   },
@@ -46,8 +46,34 @@ export const BOOKS = [
     id: 6,
     title: "Designing Data-Intensive Applications",
     author: "Martin Kleppmann",
-    category: "Software Engineering",
+    category: "Computer Science",
     price: 4200,
     cover: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 7,
+    title: "The Pragmatic Programmer",
+    author: "David Thomas & Andrew Hunt",
+    category: "Computer Science",
+    price: 3800,
+    cover: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 8,
+    title: "Man's Search for Meaning",
+    author: "Viktor E. Frankl",
+    category: "Philosophy",
+    price: 1600,
+    cover: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 9,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    category: "Literature",
+    price: 1250,
+    cover: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=500&q=80"
   }
 ];
+
+export const CATEGORIES = ["All", "Classic", "Computer Science", "Literature", "Philosophy", "Self-Improvement"];
