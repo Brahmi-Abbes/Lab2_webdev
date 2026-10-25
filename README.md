@@ -1,6 +1,6 @@
 # PageTurner — Independent Bookstore
 
-PageTurner is a lightweight frontend web application designed as a student project to demonstrate core React principles and centralized state management using Redux Toolkit and React-Redux. The application represents a modest online bookstore where users can explore a curated catalog of books, search and filter titles, and manage an interactive shopping bag with real-time updates.
+PageTurner is a lightweight frontend web application designed as a student project to demonstrate core React principles and centralized state management using Redux Toolkit and React-Redux. The application represents a modest online bookstore where users can explore a curated catalog of books and manga, search and filter titles, and manage an interactive shopping bag with real-time updates.
 
 ---
 
@@ -10,7 +10,8 @@ PageTurner is a lightweight frontend web application designed as a student proje
 - **Module:** Web Application and Mobile Development (WAMD)
 - **Assignment:** TD-TP 2 — Create a React Application with Redux for State Management
 - **Institution:** Higher National School of Advanced Technologies (ENSTA)
-- **Author:** [Student Full Name Placeholder]
+- **Author:** Brahmi Abbes
+- **Group:** AI Group 1 (AI1)
 - **Repository:** https://github.com/Brahmi-Abbes/Lab2_webdev
 
 ---
@@ -18,7 +19,7 @@ PageTurner is a lightweight frontend web application designed as a student proje
 ## Features
 
 ### Mandatory Requirements
-- **Book Catalog:** Displays 9 realistic books across diverse categories with titles, authors, categories, Algerian dinar prices, and cover images with fallbacks.
+- **Book Catalog:** Displays 11 curated titles across literature, computer science, philosophy, and manga with titles, authors, categories, Algerian dinar prices, and cover images with fallbacks.
 - **Component Architecture:** Reusable, single-responsibility components (`Header`, `BookList`, `BookCard`, `Cart`, `CartItem`).
 - **Props Passing:** Data passed unidirectionally from parent to child components.
 - **Local State (`useState`):** Manages search query, selected category, and sort option locally in the catalog, as well as temporary button feedback in cards.
@@ -31,7 +32,7 @@ PageTurner is a lightweight frontend web application designed as a student proje
 
 ### Optional Features
 - **Search:** Real-time search filtering by book title or author.
-- **Category Filter:** Filter catalog by specific genre or view all books.
+- **Category Filter:** Filter catalog by specific genre (Classic, Computer Science, Literature, Manga, Philosophy, Self-Improvement) or view all books.
 - **Sorting:** Sort books by Featured (default ID), Price: Low to High, Price: High to Low, or Title: A–Z.
 - **LocalStorage Persistence:** Shopping cart items automatically persist across browser refreshes via safe browser storage with non-browser environment guards.
 - **Add to Cart Feedback:** Visual confirmation ("Added ✓") displays briefly on the button when an item is added.
@@ -76,7 +77,7 @@ Lab2_webdev/
     │   ├── Cart.jsx             # Shopping cart panel container and subtotal calculation
     │   └── CartItem.jsx         # Individual cart row with quantity stepper (+ / -) and remove button
     └── data/
-        └── books.js             # Catalog data array containing 9 book records and category definitions
+        └── books.js             # Catalog data array containing 11 book/manga records and categories
 ```
 
 ---
@@ -91,11 +92,11 @@ The Redux store manages a single global slice under `state.cart`:
   cart: {
     items: [
       {
-        id: 1,
-        title: "The Stranger",
-        author: "Albert Camus",
-        category: "Classic",
-        price: 1200,
+        id: 4,
+        title: "One Piece, Vol. 1: Romance Dawn",
+        author: "Eiichiro Oda",
+        category: "Manga",
+        price: 950,
         cover: "...",
         quantity: 2
       }
@@ -165,11 +166,11 @@ Production assets are generated in the `dist/` directory.
 
 ## Screenshots
 
-To prepare your submission deliverables, save the following screenshots in the `screenshots/` directory:
+Save the following screenshots in the `screenshots/` directory for your submission:
 
 1. `screenshots/1-catalog.png` — Default home view displaying the header, catalog grid, and empty cart.
 2. `screenshots/2-cart-items.png` — View with multiple books added, demonstrating item quantities, line subtotals, and total price.
-3. `screenshots/3-search-filter.png` — Catalog filtered by keyword search or category dropdown.
+3. `screenshots/3-search-filter.png` — Catalog filtered by keyword search or category dropdown (e.g. Manga category).
 
 ---
 

@@ -1,5 +1,5 @@
 // src/data/books.js
-// Catalog of books for PageTurner Bookstore (9 curated books)
+// Catalog of books for PageTurner Bookstore (including literature, tech, and manga)
 
 export const BOOKS = [
   {
@@ -28,6 +28,14 @@ export const BOOKS = [
   },
   {
     id: 4,
+    title: "One Piece, Vol. 1: Romance Dawn",
+    author: "Eiichiro Oda",
+    category: "Manga",
+    price: 950,
+    cover: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 5,
     title: "1984",
     author: "George Orwell",
     category: "Classic",
@@ -35,7 +43,15 @@ export const BOOKS = [
     cover: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80"
   },
   {
-    id: 5,
+    id: 6,
+    title: "One Piece, Vol. 100: Haoshoku",
+    author: "Eiichiro Oda",
+    category: "Manga",
+    price: 950,
+    cover: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 7,
     title: "To Kill a Mockingbird",
     author: "Harper Lee",
     category: "Literature",
@@ -43,7 +59,7 @@ export const BOOKS = [
     cover: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=500&q=80"
   },
   {
-    id: 6,
+    id: 8,
     title: "Designing Data-Intensive Applications",
     author: "Martin Kleppmann",
     category: "Computer Science",
@@ -51,7 +67,7 @@ export const BOOKS = [
     cover: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=500&q=80"
   },
   {
-    id: 7,
+    id: 9,
     title: "The Pragmatic Programmer",
     author: "David Thomas & Andrew Hunt",
     category: "Computer Science",
@@ -59,7 +75,7 @@ export const BOOKS = [
     cover: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80"
   },
   {
-    id: 8,
+    id: 10,
     title: "Man's Search for Meaning",
     author: "Viktor E. Frankl",
     category: "Philosophy",
@@ -67,7 +83,7 @@ export const BOOKS = [
     cover: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=500&q=80"
   },
   {
-    id: 9,
+    id: 11,
     title: "The Great Gatsby",
     author: "F. Scott Fitzgerald",
     category: "Literature",
@@ -76,4 +92,12 @@ export const BOOKS = [
   }
 ];
 
-export const CATEGORIES = ["All", "Classic", "Computer Science", "Literature", "Philosophy", "Self-Improvement"];
+export const CATEGORIES = [
+  "All",
+  "Classic",
+  "Computer Science",
+  "Literature",
+  "Manga",
+  "Philosophy",
+  "Self-Improvement"
+];
