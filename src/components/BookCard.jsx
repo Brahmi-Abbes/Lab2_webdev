@@ -1,4 +1,4 @@
-﻿// src/components/BookCard.jsx
+// src/components/BookCard.jsx
 // Reusable book card component displaying individual book data passed via props.
 
 import React, { useState } from 'react';

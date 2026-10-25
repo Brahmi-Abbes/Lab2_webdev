@@ -1,4 +1,4 @@
-﻿// src/components/Cart.jsx
+// src/components/Cart.jsx
 // Compact shopping bag panel on the right. When empty, displays "Your bag is empty."
 
 import React from 'react';

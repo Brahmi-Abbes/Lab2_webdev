@@ -1,4 +1,4 @@
-﻿// src/features/cart/cartSlice.js
+// src/features/cart/cartSlice.js
 // Redux Toolkit Slice: defines the cart state, reducers, and selectors for PageTurner.
 
 import { createSlice } from '@reduxjs/toolkit';

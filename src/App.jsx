@@ -1,4 +1,4 @@
-﻿// src/App.jsx
+// src/App.jsx
 // Main application layout for PageTurner Bookstore.
 
 import React from 'react';

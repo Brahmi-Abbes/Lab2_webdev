@@ -1,4 +1,4 @@
-﻿// src/data/books.js
+// src/data/books.js
 // Catalog of books for PageTurner Bookstore (9 curated books)
 
 export const BOOKS = [

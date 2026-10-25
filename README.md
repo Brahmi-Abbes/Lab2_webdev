@@ -1,82 +1,91 @@
-﻿# PageTurner — Independent Online Bookstore
+# PageTurner — Independent Bookstore
 
-> **Course:** Web Application Mobile Development (WAMD) — TD-TP 2  
-> **Institution:** ENSTA (First Semester 2026)  
-> **Topic:** React Application with Redux for State Management  
-> **Student:** [Your Name / Student ID Placeholder]  
+PageTurner is a lightweight frontend web application designed as a student project to demonstrate core React principles and centralized state management using Redux Toolkit and React-Redux. The application represents a modest online bookstore where users can explore a curated catalog of books, search and filter titles, and manage an interactive shopping bag with real-time updates.
 
 ---
 
-## 1. Project Overview
+## Project Information
 
-**PageTurner** is a clean, student-crafted online bookstore built as a complete submission for the WAMD TD-TP 2 assignment. It demonstrates key React principles (components, JSX, props, local state, and event handling) combined with centralized, predictable state management using **Redux Toolkit** and **React-Redux**.
-
-The application features:
-- A catalog of 9 carefully curated books across classic literature, technology, self-improvement, and philosophy.
-- Live search filtering by title or author using React local state (`useState`).
-- Category filtering and sorting by price or title.
-- A compact, proportionate shopping bag aligned directly with the catalog.
-- Complete Redux shopping-cart operations: Add, Remove, Increase quantity, and Decrease quantity (guarded against falling below 1).
-- Automatic derivation of total items and cart subtotal.
-- Safe browser `localStorage` persistence.
-- Visual feedback on button interactions without distracting animations.
+- **Application Name:** PageTurner
+- **Module:** Web Application and Mobile Development (WAMD)
+- **Assignment:** TD-TP 2 — Create a React Application with Redux for State Management
+- **Institution:** Higher National School of Advanced Technologies (ENSTA)
+- **Author:** [Student Full Name Placeholder]
+- **Repository:** https://github.com/Brahmi-Abbes/Lab2_webdev
 
 ---
 
-## 2. Technologies Used
+## Features
 
-- **React 19 & JSX:** Component-based UI and declarative markup.
-- **Redux Toolkit (`@reduxjs/toolkit`):** Efficient Redux store configuration, slice management, and immutable state updates with Immer.
-- **React-Redux (`react-redux`):** Official bindings providing `<Provider>`, `useSelector`, and `useDispatch`.
-- **Vite:** High-performance local development server and build tool.
-- **Vanilla CSS:** Natural, content-focused styling without third-party CSS frameworks.
+### Mandatory Requirements
+- **Book Catalog:** Displays 9 realistic books across diverse categories with titles, authors, categories, Algerian dinar prices, and cover images with fallbacks.
+- **Component Architecture:** Reusable, single-responsibility components (`Header`, `BookList`, `BookCard`, `Cart`, `CartItem`).
+- **Props Passing:** Data passed unidirectionally from parent to child components.
+- **Local State (`useState`):** Manages search query, selected category, and sort option locally in the catalog, as well as temporary button feedback in cards.
+- **Event Handling:** Handles clicks, input changes, and select actions cleanly.
+- **Centralized Redux Store:** Configured with Redux Toolkit to maintain the shared shopping cart.
+- **Redux Actions & Reducers:** Supports adding books, incrementing quantities on repeat additions, adjusting item quantities (+ / -), and removing books.
+- **Quantity Protection:** Guard logic prevents item quantities from falling below 1.
+- **Derived Calculations:** Total book count and subtotal are derived directly from cart state using selectors (`selectTotalQuantity`, `selectTotalPrice`) without storing redundant values.
+- **Empty Cart State:** Displays a concise empty-cart message when no books are in the bag.
+
+### Optional Features
+- **Search:** Real-time search filtering by book title or author.
+- **Category Filter:** Filter catalog by specific genre or view all books.
+- **Sorting:** Sort books by Featured (default ID), Price: Low to High, Price: High to Low, or Title: A–Z.
+- **LocalStorage Persistence:** Shopping cart items automatically persist across browser refreshes via safe browser storage with non-browser environment guards.
+- **Add to Cart Feedback:** Visual confirmation ("Added ✓") displays briefly on the button when an item is added.
 
 ---
 
-## 3. Project Architecture
+## Technologies
+
+- **React:** 19.3.1 (Component-based user interface)
+- **JavaScript & JSX:** ES6+ modules and declarative markup
+- **Redux Toolkit:** 2.13.0 (Store configuration, slice reducers, action creators, and Immer integration)
+- **React-Redux:** 9.3.0 (Provider wrapper, useSelector, and useDispatch hooks)
+- **Vite:** 8.3.4 (Build tool and development server)
+- **CSS:** Plain CSS using responsive design, flexbox, and CSS grid
+- **Development Environment:** Node.js (v22.15.0 LTS) and npm (10.9.2)
+
+---
+
+## Project Structure
 
 ```
 Lab2_webdev/
-├── package.json
-├── index.html
-├── vite.config.js
-├── README.md
+├── index.html                   # HTML entry shell
+├── package.json                 # Project dependencies, metadata, and scripts
+├── vite.config.js               # Vite configuration with React plugin
+├── test_verification.mjs        # Automated verification test suite
+├── .gitignore                   # Ignored files (node_modules, dist, logs)
+├── screenshots/                 # Submission screenshots folder
 └── src/
-    ├── main.jsx                  # Mounts the React application and provides the Redux Store
-    ├── App.jsx                   # Primary layout container (Header, BookList, Cart)
-    ├── index.css                 # Clean stylesheet (terracotta, off-white, serif typography)
+    ├── main.jsx                 # Mounts the DOM root and wraps App with Redux <Provider>
+    ├── App.jsx                  # Main application layout container
+    ├── index.css                # Application styles (color tokens, typography, grid)
     ├── app/
-    │   └── store.js              # Central Redux store configuration
+    │   └── store.js             # Central Redux store configuration
     ├── features/
     │   └── cart/
-    │       └── cartSlice.js      # Cart slice, reducers, persistence, and derived selectors
+    │       └── cartSlice.js     # Cart state, reducers, persistence, and derived selectors
     ├── components/
-    │   ├── Header.jsx            # Store title and live cart count
-    │   ├── BookList.jsx          # Catalog section with search, category filter, and sorting
-    │   ├── BookCard.jsx          # Reusable book card receiving props & dispatching addToCart
-    │   ├── Cart.jsx              # Compact shopping bag panel
-    │   └── CartItem.jsx          # Individual cart item with quantity stepper (+ / -) & remove
+    │   ├── Header.jsx           # Store branding and reactive cart count indicator
+    │   ├── BookList.jsx         # Catalog section with search, category filtering, and sorting
+    │   ├── BookCard.jsx         # Individual book card with cover image and Add to Cart action
+    │   ├── Cart.jsx             # Shopping cart panel container and subtotal calculation
+    │   └── CartItem.jsx         # Individual cart row with quantity stepper (+ / -) and remove button
     └── data/
-        └── books.js              # Catalog data (9 books with titles, authors, prices, covers)
+        └── books.js             # Catalog data array containing 9 book records and category definitions
 ```
 
 ---
 
-## 4. Main React Components & Responsibilities
+## Redux State Management
 
-| Component | Responsibility | Props Received | State / Redux Used |
-| :--- | :--- | :--- | :--- |
-| **`Header`** | Displays the store name and cart item counter. | None | Reads total count via `useSelector(selectTotalQuantity)` |
-| **`BookList`** | Controls catalog filtering, sorting, and renders the 3-column book grid. | `books` (array) | Local `useState` (`searchTerm`, `selectedCategory`, `sortBy`) |
-| **`BookCard`** | Displays individual book details and handles the "Add to Cart" interaction. | `book` (object) | Local feedback state (`useState`), dispatches `addToCart` via `useDispatch` |
-| **`Cart`** | Renders the compact shopping bag panel, empty state, and overall subtotal. | None | Reads `useSelector(selectCartItems)` and `useSelector(selectTotalPrice)` |
-| **`CartItem`** | Renders individual cart lines, quantity stepper controls, and removal action. | `item` (object) | Dispatches `increaseQuantity`, `decreaseQuantity`, and `removeFromCart` |
+### Store Structure
+The Redux store manages a single global slice under `state.cart`:
 
----
-
-## 5. Redux Store & State Structure
-
-### Global State (`state.cart`)
 ```javascript
 {
   cart: {
@@ -87,7 +96,7 @@ Lab2_webdev/
         author: "Albert Camus",
         category: "Classic",
         price: 1200,
-        cover: "https://...",
+        cover: "...",
         quantity: 2
       }
     ]
@@ -95,71 +104,75 @@ Lab2_webdev/
 }
 ```
 
-### Actions & Reducers (`src/features/cart/cartSlice.js`)
+### Actions and Reducers (`src/features/cart/cartSlice.js`)
+- `addToCart(book)`: Searches the current `items` array. If an item with the same ID exists, it increments its `quantity` by 1. Otherwise, it pushes the book with `quantity = 1`.
+- `removeFromCart(bookId)`: Filters out the book matching the given ID.
+- `increaseQuantity(bookId)`: Finds the book by ID and increments `quantity` by 1.
+- `decreaseQuantity(bookId)`: Finds the book by ID and decrements `quantity` by 1, with a guard preventing quantities below 1 (`quantity > 1`).
+- `clearCart()`: Empties the `items` array.
 
-1. **`addToCart(book)`**:
-   - Checks if the item already exists in `state.items`.
-   - If present, increments its `quantity += 1`.
-   - If new, appends `{ ...book, quantity: 1 }`.
-   - Persists state to `localStorage`.
-2. **`removeFromCart(bookId)`**:
-   - Filters out the item matching `item.id !== bookId`.
-   - Persists state to `localStorage`.
-3. **`increaseQuantity(bookId)`**:
-   - Finds the item by ID and increments `item.quantity += 1`.
-   - Persists state to `localStorage`.
-4. **`decreaseQuantity(bookId)`**:
-   - Finds the item and decrements quantity **only if `quantity > 1`** (guard ensures quantity never falls below 1).
-   - Persists state to `localStorage`.
-5. **`clearCart()`**:
-   - Empties the cart (`state.items = []`).
-   - Persists state to `localStorage`.
-
-### Derived Selectors
-- **`selectCartItems`**: Extracts `state.cart.items`.
-- **`selectTotalQuantity`**: Derived via `.reduce((sum, item) => sum + item.quantity, 0)`.
-- **`selectTotalPrice`**: Derived via `.reduce((sum, item) => sum + item.price * item.quantity, 0)`.
+### React-Redux Integration
+1. **`<Provider store={store}>`**: Declared in `src/main.jsx`, making the central store accessible to every component in the component tree.
+2. **`useDispatch()`**: Used in `BookCard.jsx` to dispatch `addToCart`, and in `CartItem.jsx` to dispatch `increaseQuantity`, `decreaseQuantity`, and `removeFromCart`.
+3. **`useSelector()`**: Used in `Header.jsx` to read `selectTotalQuantity`, and in `Cart.jsx` to read `selectCartItems` and `selectTotalPrice`.
+4. **Reactive UI Updates**: When an action is dispatched, the reducer creates an updated state in the store. React-Redux detects the reference change in the selected state and triggers an immediate re-render of the subscribed components.
 
 ---
 
-## 6. Prerequisites & Installation
+## Getting Started
 
-### Prerequisites
-- Node.js (version 18 or newer)
-- npm (version 9 or newer)
-
-### Installation
+### 1. Clone the Repository
 ```bash
-# Navigate to the project root:
-cd D:\Projects\Lab2_webdev
+git clone https://github.com/Brahmi-Abbes/Lab2_webdev.git
+```
 
-# Install dependencies:
+### 2. Navigate to the Directory
+```bash
+cd Lab2_webdev
+```
+
+### 3. Install Dependencies
+```bash
 npm install
 ```
 
-### Local Development Server
+### 4. Start Development Server
 ```bash
 npm run dev
 ```
-Open your browser at **`http://localhost:5173/`**.
+Open your browser and navigate to `http://localhost:5173/`.
 
-### Production Build
+### 5. Run Automated Tests
+```bash
+npm test
+```
+
+### 6. Create Production Build
 ```bash
 npm run build
 ```
-Builds optimized production assets into the `dist/` directory.
-
-### Running Verification Tests
-```bash
-# Execute the automated Node verification script:
-node test_verification.mjs
-```
+Production assets are generated in the `dist/` directory.
 
 ---
 
-## 7. Submission Checklist
+## Requirements
 
-- [x] Complete project source code committed and pushed to private GitHub repository.
-- [x] Verified production build (`npm run build`).
-- [x] Tested in browser with zero console errors.
-- [x] Documentation complete (`README.md`).
+- **Node.js:** v18.0.0 or higher (tested with Node.js v22.15.0 LTS)
+- **npm:** v9.0.0 or higher (tested with npm 10.9.2)
+- **Web Browser:** Any modern evergreen browser (Chrome, Firefox, Edge, Safari)
+
+---
+
+## Screenshots
+
+To prepare your submission deliverables, save the following screenshots in the `screenshots/` directory:
+
+1. `screenshots/1-catalog.png` — Default home view displaying the header, catalog grid, and empty cart.
+2. `screenshots/2-cart-items.png` — View with multiple books added, demonstrating item quantities, line subtotals, and total price.
+3. `screenshots/3-search-filter.png` — Catalog filtered by keyword search or category dropdown.
+
+---
+
+## Assignment Context
+
+This application was developed as a laboratory assignment for the **WAMD** module at the **Higher National School of Advanced Technologies (ENSTA)** during the First Semester of 2026. It serves as an academic demonstration of component-based frontend engineering, state hoisting versus global state, props delegation, and predictable state transitions using Redux.

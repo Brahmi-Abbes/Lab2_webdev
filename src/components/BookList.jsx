@@ -1,4 +1,4 @@
-﻿// src/components/BookList.jsx
+// src/components/BookList.jsx
 // Book catalog component with search, category filtering, sorting, and a 3-column grid.
 
 import React, { useState } from 'react';

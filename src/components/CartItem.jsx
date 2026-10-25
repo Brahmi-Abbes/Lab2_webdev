@@ -1,4 +1,4 @@
-﻿// src/components/CartItem.jsx
+// src/components/CartItem.jsx
 // Displays an individual cart line with quantity controls (+ / -) and removal.
 
 import React from 'react';
